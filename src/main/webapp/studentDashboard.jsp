@@ -259,6 +259,161 @@
             opacity: 0.6;
         }
 
+        /* Equipment Table */
+        .equipment-section {
+            margin-top: 40px;
+        }
+
+        .equipment-table-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 24px 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .table-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .equipment-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .equipment-table thead {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .equipment-table th {
+            padding: 16px 28px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .equipment-table td {
+            padding: 20px 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        .equipment-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .equipment-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .equipment-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .equipment-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .equipment-count {
+            font-weight: 600;
+            color: #0096ff;
+        }
+
+        .borrow-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #0096ff 0%, #0072e5 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            box-shadow: 0 2px 8px rgba(0, 150, 255, 0.3);
+        }
+
+        .borrow-btn:hover {
+            background: linear-gradient(135deg, #00a8ff 0%, #0088ff 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 150, 255, 0.4);
+        }
+
+        .borrow-btn:active {
+            transform: translateY(0);
+        }
+
+        .borrow-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .empty-state {
+            padding: 60px 28px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .empty-state p {
+            font-size: 15px;
+            margin: 0;
+        }
+
+        /* Messages */
+        .message {
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.success {
+            background: rgba(40, 167, 69, 0.15);
+            border: 1px solid rgba(40, 167, 69, 0.3);
+            color: #6bcf7f;
+        }
+
+        .message.error {
+            background: rgba(220, 53, 69, 0.15);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            color: #ff6b7a;
+        }
+
         /* Mobile Menu Toggle */
         .menu-toggle {
             display: none;
@@ -333,6 +488,62 @@
             .card .value {
                 font-size: 32px;
             }
+
+            .equipment-table-container {
+                border-radius: 16px;
+            }
+
+            .equipment-table th,
+            .equipment-table td {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+
+            .borrow-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .equipment-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .equipment-table thead,
+            .equipment-table tbody,
+            .equipment-table tr,
+            .equipment-table td {
+                display: block;
+            }
+
+            .equipment-table thead {
+                display: none;
+            }
+
+            .equipment-table tr {
+                margin-bottom: 16px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                padding: 16px;
+            }
+
+            .equipment-table td {
+                border: none;
+                padding: 8px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .equipment-table td:before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.6);
+                margin-right: 12px;
+            }
         }
 
         /* Loading Animation */
@@ -380,20 +591,32 @@
         <p>Overview of your sports equipment management</p>
     </div>
 
+    <% if(request.getParameter("success") != null){ %>
+    <div class="message success">
+        ✓ <%= request.getParameter("success") %>
+    </div>
+    <% } %>
+
+    <% if(request.getParameter("error") != null){ %>
+    <div class="message error">
+        ✗ <%= request.getParameter("error") %>
+    </div>
+    <% } %>
+
     <div class="cards">
         <div class="card">
-
+            <div class="icon">🏃</div>
             <h3>Total Equipments</h3>
             <div class="value">
                 <%
                     try{
-                        String url="jdbc:mysql://localhost:3306/sportsdb";
+                        String url="jdbc:mysql://localhost:3306/sem";
                         String dbUser="root";
-                        String dbPass="@Rajput9405";
+                        String dbPass="admin";
                         Class.forName("com.mysql.cj.jdbc.Driver");
                         Connection conn=DriverManager.getConnection(url,dbUser,dbPass);
                         Statement stmt=conn.createStatement();
-                        ResultSet rs=stmt.executeQuery("SELECT COUNT(*) FROM equipment");
+                        ResultSet rs=stmt.executeQuery("SELECT COUNT(DISTINCT name) FROM equipments");
                         if(rs.next()){ out.print(rs.getInt(1)); }
                         conn.close();
                     }catch(Exception e){ out.print("0"); }
@@ -407,19 +630,105 @@
             <div class="value">
                 <%
                     try{
-                        String url="jdbc:mysql://localhost:3306/sportsdb";
+                        String url="jdbc:mysql://localhost:3306/sem";
                         String dbUser="root";
-                        String dbPass="@Rajput9405";
+                        String dbPass="admin";
                         Class.forName("com.mysql.cj.jdbc.Driver");
                         Connection conn=DriverManager.getConnection(url,dbUser,dbPass);
                         Statement stmt=conn.createStatement();
-                        int sid = (Integer) session.getAttribute("student_id");
-                        ResultSet rs=stmt.executeQuery("SELECT COUNT(*) FROM issued WHERE student_id="+sid);
-                        if(rs.next()){ out.print(rs.getInt(1)); }
+                        Object rollObj = session.getAttribute("student_roll");
+                        if(rollObj != null){
+                            String rollNo = rollObj.toString();
+                            ResultSet rs=stmt.executeQuery("SELECT COUNT(*) FROM issued WHERE student_roll='"+rollNo+"'");
+                            if(rs.next()){ out.print(rs.getInt(1)); }
+                        } else {
+                            out.print("0");
+                        }
                         conn.close();
                     }catch(Exception e){ out.print("0"); }
                 %>
             </div>
+        </div>
+    </div>
+
+    <div class="equipment-section">
+        <div class="equipment-table-container">
+            <div class="table-header">
+                <h2>Available Equipment</h2>
+            </div>
+            <table class="equipment-table">
+                <thead>
+                    <tr>
+                        <th>Equipment Name</th>
+                        <th>Available Count</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        try{
+                            String url="jdbc:mysql://localhost:3306/sem";
+                            String dbUser="root";
+                            String dbPass="admin";
+                            Class.forName("com.mysql.cj.jdbc.Driver");
+                            Connection conn=DriverManager.getConnection(url,dbUser,dbPass);
+                            Statement stmt=conn.createStatement();
+                            
+                            // Query to get equipment with quantity
+                            // equipments table has: equipment_id, name, quantity
+                            String query = "SELECT name, quantity FROM equipments ORDER BY name";
+                            ResultSet rs = stmt.executeQuery(query);
+                            
+                            boolean hasData = false;
+                            while(rs.next()){
+                                hasData = true;
+                                String equipName = rs.getString("name");
+                                int count = rs.getInt("quantity");
+                    %>
+                    <tr>
+                        <td class="equipment-name" data-label="Equipment"><%= equipName %></td>
+                        <td class="equipment-count" data-label="Available"><%= count %></td>
+                        <td data-label="Action">
+                            <form action="requestBorrow.jsp" method="post" style="display: inline;">
+                                <input type="hidden" name="equipment_name" value="<%= equipName %>">
+                                <button type="submit" class="borrow-btn" <%= count == 0 ? "disabled" : "" %>>
+                                    <%= count == 0 ? "Out of Stock" : "Request to Borrow" %>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <%
+                            }
+                            
+                            if(!hasData){
+                    %>
+                    <tr>
+                        <td colspan="3">
+                            <div class="empty-state">
+                                <p>No equipment available at the moment.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <%
+                            }
+                            
+                            rs.close();
+                            stmt.close();
+                            conn.close();
+                        }catch(Exception e){
+                    %>
+                    <tr>
+                        <td colspan="3">
+                            <div class="empty-state">
+                                <p>Error loading equipment. Please try again later.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <%
+                        }
+                    %>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -448,6 +757,18 @@
         if (window.innerWidth > 768) {
             sidebar.classList.remove('open');
         }
+    });
+
+    // Auto-hide messages after 5 seconds
+    const messages = document.querySelectorAll('.message');
+    messages.forEach(function(message) {
+        setTimeout(function() {
+            message.style.opacity = '0';
+            message.style.transform = 'translateY(-10px)';
+            setTimeout(function() {
+                message.remove();
+            }, 300);
+        }, 5000);
     });
 </script>
 
