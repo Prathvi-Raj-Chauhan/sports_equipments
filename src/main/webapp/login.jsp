@@ -1,33 +1,33 @@
 <%@ page import="java.sql.*"%>
 <%
-    String email = request.getParameter("email");
+    String rollNo = request.getParameter("roll_no");
     String pass  = request.getParameter("password");
 
-    String url      = "jdbc:mysql://localhost:3306/sportsdb";
+    String url      = "jdbc:mysql://localhost:3306/sem";
     String dbUser   = "root";
-    String dbPass   = "@Rajput9405";
+    String dbPass   = "admin";
 
-    String query = "SELECT id, name FROM students WHERE email=? AND password=?";
+    String query = "SELECT roll_no, name FROM students WHERE roll_no=? AND password=?";
 
     try {
     Class.forName("com.mysql.cj.jdbc.Driver");
     Connection conn = DriverManager.getConnection(url, dbUser, dbPass);
 
     PreparedStatement pstmt = conn.prepareStatement(query);
-    pstmt.setString(1, email);
+    pstmt.setString(1, rollNo);
     pstmt.setString(2, pass);
 
     ResultSet res = pstmt.executeQuery();
 
     if (res.next()) {
     // Store session data
-    session.setAttribute("student_id", res.getInt("id"));
+    session.setAttribute("student_roll", res.getInt("roll_no"));
     session.setAttribute("username", res.getString("name"));
 
     response.sendRedirect("studentDashboard.jsp");
     } else {
     // Redirect back to login with message
-    response.sendRedirect("login.jsp?error=1");
+     out.println("ERROR IN LOGGING IN");
     }
 
     res.close();
