@@ -1,3 +1,10 @@
+CREATE TABLE IF NOT EXISTS issued (
+    issue_id INT AUTO_INCREMENT PRIMARY KEY,
+    equipment_name VARCHAR(255) NOT NULL,
+    student_roll VARCHAR(50) NOT NULL,
+    issue_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(40) NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- SQL command to create the issued table for Sports Equipment Management System
 
 CREATE TABLE IF NOT EXISTS issued (
